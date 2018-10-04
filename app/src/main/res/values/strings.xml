@@ -1,0 +1,38 @@
+<resources>
+    <string name="app_name">OO lab Project</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_test">TestActivity</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="action_example">Example action</string>
+    <string name="payment">Expense</string>
+    <string name="type">Type</string>
+    <string name="title_activity_edit_income">Edit Income</string>
+    <string name="title_activity_edit_expense">Edit Expense</string>
+    <string name="income">income</string>
+    <string name="title_activity_add_income">Add Income</string>
+    <string name="title_activity_add_expense">Add Expense</string>
+    <string name="invalid_amount">Invalid Amount</string>
+    <string name="no_description_error">Description Required!!!</string>
+    <string name="no_amount_error">Amount Required!!!</string>
+    <string name="negative_amount_error">Amount must be a Whole Number</string>
+    <string name="fab_add_recurring_expense">Add Recurring Expense/Income</string>
+    <string name="fab_add_expense">Add Income/Expense</string>
+
+
+    <string-array name="interval_spinner_array">
+        <item>Weekly</item>
+        <item>In 15 Days</item>
+        <item>Monthly</item>
+        <item>Yearly</item>
+    </string-array>
+
+
+</resources>
