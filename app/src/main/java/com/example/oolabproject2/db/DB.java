@@ -25,6 +25,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
 import android.support.v4.util.Pair;
+import android.util.Log;
 
 import com.example.oolabproject2.ExpenseModel.Expense;
 import com.example.oolabproject2.ExpenseModel.RecurringExpense;
@@ -120,11 +121,19 @@ public final class DB
         else
         {
             long id = database.insert(SQLiteDBHelper.TABLE_EXPENSE, null, generateContentValuesForExpense(expense));
+//            Cursor allRows  = database.rawQuery("SELECT * FROM " + SQLiteDBHelper.TABLE_EXPENSE, null);
+//            System.out.println("The table Contents are :-------------------------------------------------");
+//            while(allRows.moveToNext())
+//            {
+//                System.out.print("Description : " + allRows.getString(allRows.getColumnIndex(SQLiteDBHelper.COLUMN_EXPENSE_TITLE)) + "\n Date : " + allRows.getLong(allRows.getColumnIndex(SQLiteDBHelper.COLUMN_EXPENSE_DATE)) + "\nAmount : " + allRows.getDouble(allRows.getColumnIndex(SQLiteDBHelper.COLUMN_EXPENSE_AMOUNT)));
+//            }
+//            System.out.println("----------------------------------------------------------");
+//            Log.e(DB.class.getCanonicalName(),"Id : " + id);
 
-            if( id > 0 )
+            if( id >= 0 )
             {
                 // Refresh cache for day
-                DBCache.getInstance(context).refreshForDay(this, expense.getDate());
+//                DBCache.getInstance(context).refreshForDay(this, expense.getDate());
 
                 expense.setId(id);
                 return true;
@@ -154,8 +163,8 @@ public final class DB
     public boolean hasExpensesForDay(@NonNull Date day)
     {
         Pair<Long, Long> range = DateHelper.getTimestampRangeForDay(day);
-//        Date gmt = DateHelper.cleanGMTDate(day);
-        Date gmt = day;
+        Date gmt = DateHelper.cleanGMTDate(day);
+//        Date gmt = day;
 
         // Check cache
         Boolean hasExpensesCached = DBCache.getInstance(context).hasExpensesForDay(gmt);
@@ -691,7 +700,7 @@ public final class DB
     @NonNull
     private static ContentValues generateContentValuesForExpense(@NonNull Expense expense)
     {
-        final ContentValues values = new ContentValues();
+        ContentValues values = new ContentValues();
 
         if( expense.getId() != null )
         {

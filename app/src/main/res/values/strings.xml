@@ -26,6 +26,37 @@
     <string name="fab_add_recurring_expense">Add Recurring Expense/Income</string>
     <string name="fab_add_expense">Add Income/Expense</string>
 
+    <string name="monthly">MONTHLY</string>
+    <string name="weekly">WEEKLY</string>
+    <string name="bi_weekly">BI-WEEKLY</string>
+    <string name="yearly">YEARLY</string>
+
+    <string name="dialog_edit_expense_title">What do you want to do?</string>
+    <string name="dialog_edit_income_title">What do you want to do?</string>
+    <string-array name="dialog_edit_expense_choices">
+        <item>Edit expense</item>
+        <item>Delete expense</item>
+    </string-array>
+    <string-array name="dialog_edit_income_choices">
+        <item>Edit income</item>
+        <item>Delete income</item>
+    </string-array>
+    <string name="dialog_edit_recurring_expense_title">Recurring expense: What do you want to do?</string>
+    <string name="dialog_edit_recurring_income_title">Recurring income: What do you want to do?</string>
+    <string-array name="dialog_edit_recurring_expense_choices">
+        <item>Edit this instance</item>
+        <item>Delete this instance only</item>
+        <item>Delete all following</item>
+        <item>Delete all before</item>
+        <item>Delete all</item>
+    </string-array>
+    <string-array name="dialog_edit_recurring_income_choices">
+        <item>Edit this instance</item>
+        <item>Delete this instance only</item>
+        <item>Delete all following</item>
+        <item>Delete all before</item>
+        <item>Delete all</item>
+    </string-array>
 
     <string-array name="interval_spinner_array">
         <item>Weekly</item>

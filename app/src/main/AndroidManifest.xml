@@ -17,20 +17,20 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".EditExpenseActivity"
             android:label="Edit Expense"
-            android:parentActivityName=".MainActivity">
-
-        </activity>
-        <activity android:name=".EditRecurringExpense"
-            android:label="Edit Recurring Expense"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity
+            android:name=".EditRecurringExpense"
             android:exported="true"
-            android:parentActivityName=".MainActivity">
-        </activity>
+            android:label="Edit Recurring Expense"
+            android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".EditExpenseActivity2"></activity>
     </application>
 
 </manifest>

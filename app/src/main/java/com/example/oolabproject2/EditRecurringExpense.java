@@ -80,7 +80,6 @@ public class EditRecurringExpense extends AppCompatActivity {
 
             setTitle(isIncome ? R.string.title_activity_edit_income : R.string.title_activity_edit_expense);
         }
-        
 
         setUpButtons();
         setUpTextViews();

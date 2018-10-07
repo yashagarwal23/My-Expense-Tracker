@@ -26,6 +26,13 @@
             android:background="@drawable/elevation_shadow"
             android:layout_marginTop="-7dp" />
 
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/expenseRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+        </android.support.v7.widget.RecyclerView>
+
         <LinearLayout android:id="@+id/emptyExpensesRecyclerViewPlaceholder"
             android:layout_width="match_parent"
             android:layout_height="0dip"
@@ -54,6 +61,7 @@
 
 
     <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/fam"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
         android:layout_alignParentBottom="true"

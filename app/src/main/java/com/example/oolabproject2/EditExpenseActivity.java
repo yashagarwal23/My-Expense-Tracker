@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SwitchCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -46,19 +47,8 @@ public class EditExpenseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_expense);
-//        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
 
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-
-        date = new Date(getIntent().getLongExtra(("date"),System.currentTimeMillis()));
+        date = (getIntent().hasExtra("date")) ? new Date(getIntent().getLongExtra(("date"),System.currentTimeMillis())) : new Date(System.currentTimeMillis());
 
         mDescriptionEditText = (EditText)findViewById(R.id.description_edittext);
         mAmountEditText = (EditText)findViewById(R.id.amount_edittext);
@@ -66,8 +56,8 @@ public class EditExpenseActivity extends AppCompatActivity {
 
         if(!getIntent().getBooleanExtra("isEdit",false)) {
             setTitle("Add Expense");
-        }
-        else {
+            expense = null;
+        } else {
             expense = getIntent().getParcelableExtra("expense");
             isIncome = expense.isRevenue();
             date = expense.getDate();
@@ -85,7 +75,6 @@ public class EditExpenseActivity extends AppCompatActivity {
     private void setUpDateButton()
     {
         dateButton = (Button) findViewById(R.id.date_button);
-        removeButtonBorder(); // Remove border on lollipop
 
         updateDateButtonDisplay();
 
@@ -122,12 +111,6 @@ public class EditExpenseActivity extends AppCompatActivity {
         dateButton.setText(formatter.format(date));
     }
 
-    private void removeButtonBorder() {
-        if( Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP )
-        {
-            dateButton.setOutlineProvider(null);
-        }
-    }
 
 
     private void setUpTextViews() {
@@ -185,6 +168,7 @@ public class EditExpenseActivity extends AppCompatActivity {
                     Expense expenseToSave;
                     if (expense == null)
                     {
+                        // TODO check (-value)
                         expenseToSave = new Expense(mDescriptionEditText.getText().toString(), isIncome ? -value : value, date);
                     }
                     else
@@ -195,8 +179,13 @@ public class EditExpenseActivity extends AppCompatActivity {
                         expenseToSave.setDate(date);
                     }
 
-                    db.persistExpense(expenseToSave);
-                    Toast.makeText(EditExpenseActivity.this, getExpenseType(), Toast.LENGTH_SHORT).show();
+                    System.out.println("Expense1 \n" + "Description : " + expenseToSave.getTitle() + "\n Date : " + expenseToSave.getDate().toString());
+                    Log.e(EditExpenseActivity.class.getCanonicalName(),"Expense1 \n" + "Description : " + expenseToSave.getTitle() + "\n Date : " + expenseToSave.getDate().toString() + "\nAmount : " + expenseToSave.getAmount());
+
+                    boolean b = db.persistExpense(expenseToSave);
+                    System.out.println("Expense Saved or not : " + b);
+                    if(b)
+                        Toast.makeText(EditExpenseActivity.this, getExpenseType(), Toast.LENGTH_SHORT).show();
 
                     setResult(RESULT_OK);
 
