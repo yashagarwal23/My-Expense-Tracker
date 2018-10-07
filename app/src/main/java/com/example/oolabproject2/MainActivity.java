@@ -61,7 +61,11 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        System.out.println("Inside On Create2");
+
         db = new DB(getApplicationContext());
+
+        System.out.println("Inside On Create3");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -96,14 +100,15 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
-//        System.out.println("Inside On Create");
+        System.out.println("Inside On Create1");
+//        Log.e("vjbjavbjsb","Inside On Create log1");
 
         recyclerView = findViewById(R.id.expenseRecyclerView);
         noExpenseView = findViewById(R.id.emptyExpensesRecyclerViewPlaceholder);
         budgetLineAmount = (TextView)findViewById(R.id.budgetAmount);
 
         initialiseCalendarView();
-//        initRecycleView(savedInstanceState);
+        initRecycleView(savedInstanceState);
     }
 
     private void initRecycleView(Bundle savedInstanceState) {
@@ -126,8 +131,12 @@ public class MainActivity extends AppCompatActivity
         expensesViewAdapter = new ExpensesRecyclerViewAdapter(this, db, date);
         recyclerView.setAdapter(expensesViewAdapter);
 
+        System.out.println("Outside InitRecycleView");
+
         refreshRecyclerViewForDate(date);
         updateBalanceDisplayForDay(date);
+
+        System.out.println("Completed OnCreate");
     }
 
     private void updateBalanceDisplayForDay(@NonNull Date day)
@@ -135,17 +144,17 @@ public class MainActivity extends AppCompatActivity
         double balance = 0; // Just to keep a positive number if balance == 0
         balance -= db.getBalanceForDay(day);
 
-//        SimpleDateFormat format = new SimpleDateFormat(getResources().getString(R.string.account_balance_date_format), Locale.getDefault());
-//
-//        String formatted = getResources().getString(R.string.account_balance_format, format.format(day));
-//        if( formatted.endsWith(".:") ) //FIXME it's ugly!!
-//        {
-//            formatted = formatted.substring(0, formatted.length() - 2) + ":"; // Remove . at the end of the month (ex: nov.: -> nov:)
-//        }
-//        else if( formatted.endsWith(". :") ) //FIXME it's ugly!!
-//        {
-//            formatted = formatted.substring(0, formatted.length() - 3) + " :"; // Remove . at the end of the month (ex: nov. : -> nov :)
-//        }
+        SimpleDateFormat format = new SimpleDateFormat(getResources().getString(R.string.account_balance_date_format), Locale.getDefault());
+
+        String formatted = getResources().getString(R.string.account_balance_format, format.format(day));
+        if( formatted.endsWith(".:") ) //FIXME it's ugly!!
+        {
+            formatted = formatted.substring(0, formatted.length() - 2) + ":"; // Remove . at the end of the month (ex: nov.: -> nov:)
+        }
+        else if( formatted.endsWith(". :") ) //FIXME it's ugly!!
+        {
+            formatted = formatted.substring(0, formatted.length() - 3) + " :"; // Remove . at the end of the month (ex: nov. : -> nov :)
+        }
 
         budgetLineAmount.setText(Double.toString(balance));
 
@@ -193,15 +202,15 @@ public class MainActivity extends AppCompatActivity
 
     private void refreshAllForDate(@NonNull Date date)
     {
-//        refreshRecyclerViewForDate(date);
-//        updateBalanceDisplayForDay(date);
+        refreshRecyclerViewForDate(date);
+        updateBalanceDisplayForDay(date);
         caldroidFragment.setSelectedDates(date, date);
         caldroidFragment.refreshView();
     }
 
     private void refreshRecyclerViewForDate(@NonNull Date date)
     {
-//        expensesViewAdapter.setDate(date, db);
+        expensesViewAdapter.setDate(date, db);
 
         if( db.hasExpensesForDay(date) )
         {
@@ -213,6 +222,7 @@ public class MainActivity extends AppCompatActivity
             recyclerView.setVisibility(View.GONE);
             noExpenseView.setVisibility(View.VISIBLE);
         }
+        System.out.println("Outside refreshRecyclerViewForDate");
     }
 
     private void initialiseCalendarView() {

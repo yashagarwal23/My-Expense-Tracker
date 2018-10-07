@@ -64,6 +64,7 @@
         <item>Monthly</item>
         <item>Yearly</item>
     </string-array>
-
+    <string name="account_balance_format">Balance on %s:</string>
+    <string name="account_balance_date_format">MMM dd</string>
 
 </resources>
