@@ -1,26 +1,8 @@
-/*
- *   Copyright 2015 Benoit LETONDOR
- *
- *   Licensed under the Apache License, Version 2.0 (the "License");
- *   you may not use this file except in compliance with the License.
- *   You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- *   Unless required by applicable law or agreed to in writing, software
- *   distributed under the License is distributed on an "AS IS" BASIS,
- *   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- *   See the License for the specific language governing permissions and
- *   limitations under the License.
- */
-
 package com.example.oolabproject2.helper;
 
 import android.content.Context;
 import android.os.Build;
 import android.support.annotation.NonNull;
-
-import com.benoitletondor.easybudgetapp.BuildConfig;
 import com.google.android.gms.common.logging.Logger;
 
 import java.text.DecimalFormat;
@@ -35,11 +17,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
-/**
- * Helper to work with currencies and display
- *
- * @author Benoit LETONDOR
- */
+
+
 public class CurrencyHelper
 {
     /**
@@ -217,34 +196,34 @@ public class CurrencyHelper
      * @param value the double value
      * @return the corresponding int value (double * 100)
      */
-    public static long getDBValueForDouble(double value)
-    {
-        String stringValue = getFormattedAmountValue(value);
-        if(BuildConfig.DEBUG_LOG) Logger.debug("getDBValueForDouble: "+stringValue);
-
-        long ceiledValue = (long) Math.ceil(value * 100);
-        double ceiledDoubleValue = ceiledValue / 100.d;
-
-        if( getFormattedAmountValue(ceiledDoubleValue).equals(stringValue) )
-        {
-            if(BuildConfig.DEBUG_LOG) Logger.debug("getDBValueForDouble, return ceiled value: "+ceiledValue);
-            return ceiledValue;
-        }
-
-        long normalValue = (long) value * 100;
-        double normalDoubleValue = normalValue / 100.d;
-
-        if( getFormattedAmountValue(normalDoubleValue).equals(stringValue) )
-        {
-            if(BuildConfig.DEBUG_LOG) Logger.debug("getDBValueForDouble, return normal value: "+normalValue);
-            return normalValue;
-        }
-
-        long flooredValue = (long) Math.floor(value * 100);
-        if(BuildConfig.DEBUG_LOG) Logger.debug("getDBValueForDouble, return floored value: "+flooredValue);
-
-        return flooredValue;
-    }
+//    public static long getDBValueForDouble(double value)
+//    {
+//        String stringValue = getFormattedAmountValue(value);
+//        if(BuildConfig.DEBUG_LOG) Logger.debug("getDBValueForDouble: "+stringValue);
+//
+//        long ceiledValue = (long) Math.ceil(value * 100);
+//        double ceiledDoubleValue = ceiledValue / 100.d;
+//
+//        if( getFormattedAmountValue(ceiledDoubleValue).equals(stringValue) )
+//        {
+//            if(BuildConfig.DEBUG_LOG) Logger.debug("getDBValueForDouble, return ceiled value: "+ceiledValue);
+//            return ceiledValue;
+//        }
+//
+//        long normalValue = (long) value * 100;
+//        double normalDoubleValue = normalValue / 100.d;
+//
+//        if( getFormattedAmountValue(normalDoubleValue).equals(stringValue) )
+//        {
+//            if(BuildConfig.DEBUG_LOG) Logger.debug("getDBValueForDouble, return normal value: "+normalValue);
+//            return normalValue;
+//        }
+//
+//        long flooredValue = (long) Math.floor(value * 100);
+//        if(BuildConfig.DEBUG_LOG) Logger.debug("getDBValueForDouble, return floored value: "+flooredValue);
+//
+//        return flooredValue;
+//    }
 
     /**
      * Convenience method to get user currency
@@ -254,17 +233,17 @@ public class CurrencyHelper
      */
     public static Currency getUserCurrency(@NonNull Context context)
     {
-        return Currency.getInstance(Parameters.getInstance(context).getString(ParameterKeys.CURRENCY_ISO));
+        return Currency.getInstance(Parameters.getInstance(context).getString("currency_iso"));
     }
-
-    /**
-     * Convenience method to set user currency
-     *
-     * @param context
-     * @param currency
-     */
+//
+//    /**
+//     * Convenience method to set user currency
+//     *
+//     * @param context
+//     * @param currency
+//     */
     public static void setUserCurrency(@NonNull Context context, @NonNull Currency currency)
     {
-        Parameters.getInstance(context).putString(ParameterKeys.CURRENCY_ISO, currency.getCurrencyCode());
+        Parameters.getInstance(context).putString("currency_iso", currency.getCurrencyCode());
     }
 }
