@@ -200,9 +200,8 @@ public class ExpensesRecyclerViewAdapter extends RecyclerView.Adapter<ExpensesRe
                                     Intent startIntent = new Intent(viewHolder.view.getContext(), EditExpenseActivity.class);
                                     startIntent.putExtra("date", expense.getDate().getTime());
                                     startIntent.putExtra("expense", expense);
-
+                                    startIntent.putExtra("isEdit",true);
                                     ActivityCompat.startActivityForResult(activity, startIntent, MainActivity.ADD_EXPENSE_ACTIVITY_CODE, null);
-
                                     break;
                                 }
                                 case 1: // Delete

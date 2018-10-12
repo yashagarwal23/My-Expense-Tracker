@@ -9,13 +9,6 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
             <LinearLayout
                 android:layout_width="match_parent"
                 android:orientation="vertical"
@@ -69,9 +62,6 @@
 
                 </LinearLayout>
             </LinearLayout>
-
-        </RelativeLayout>
-    </ScrollView>
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/fam"
