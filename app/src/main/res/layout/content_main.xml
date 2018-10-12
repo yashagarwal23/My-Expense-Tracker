@@ -10,60 +10,68 @@
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
-
-        <FrameLayout
-            android:id="@+id/calendarView"
+        android:layout_height="match_parent">
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="7dp"
-            android:background="@drawable/elevation_shadow"
-            android:layout_marginTop="-7dp" />
+                <FrameLayout
+                    android:id="@+id/calendarView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
 
-        <TextView
-            android:id="@+id/budgetAmount"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp" />
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="7dp"
+                    android:background="@drawable/elevation_shadow"
+                    android:layout_marginTop="-7dp" />
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/expenseRecyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="visible">
-        </android.support.v7.widget.RecyclerView>
+                <TextView
+                    android:id="@+id/budgetAmount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp" />
 
-        <LinearLayout android:id="@+id/emptyExpensesRecyclerViewPlaceholder"
-            android:layout_width="match_parent"
-            android:layout_height="0dip"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:background="@color/placeholder_background"
-            android:gravity="center_horizontal"
-            android:paddingTop="15dp">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/expenseRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible">
+                </android.support.v7.widget.RecyclerView>
 
-            <ImageView
-                android:layout_width="48dp"
-                android:layout_height="48dp"
-                android:src="@drawable/ic_wallet"
-                android:alpha="0.6"
-                android:layout_marginBottom="5dp"/>
+                <LinearLayout android:id="@+id/emptyExpensesRecyclerViewPlaceholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dip"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@color/placeholder_background"
+                    android:gravity="center_horizontal"
+                    android:paddingTop="15dp">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/secondary_text"
-                android:textSize="14sp"
-                android:text="No Income/Expense for Today" />
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:src="@drawable/ic_wallet"
+                        android:alpha="0.6"
+                        android:layout_marginBottom="5dp"/>
 
-        </LinearLayout>
-    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/secondary_text"
+                        android:textSize="14sp"
+                        android:text="No Income/Expense for Today" />
 
+                </LinearLayout>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
 
     <com.github.clans.fab.FloatingActionMenu
         android:id="@+id/fam"
@@ -94,5 +102,4 @@
             fab:fab_label="Add Income/Expense" />
 
     </com.github.clans.fab.FloatingActionMenu>
-
 </RelativeLayout>

@@ -163,7 +163,8 @@ public class EditExpenseActivity extends AppCompatActivity {
             {
                 if (validateInputs())
                 {
-                    double value = Double.parseDouble(mAmountEditText.getText().toString());
+                    Double value = Double.parseDouble(mAmountEditText.getText().toString());
+                    System.out.println("value : "+value);
 
                     Expense expenseToSave;
                     if (expense == null)

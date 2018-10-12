@@ -61,11 +61,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        System.out.println("Inside On Create2");
-
         db = new DB(getApplicationContext());
-
-        System.out.println("Inside On Create3");
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -77,6 +73,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         final FloatingActionMenu menu = (FloatingActionMenu)findViewById(R.id.fam);
+        menu.setClosedOnTouchOutside(true);
 
         FloatingActionButton Addfab = (FloatingActionButton)findViewById(R.id.add_fab);
         Addfab.setOnClickListener(new View.OnClickListener() {
@@ -85,8 +82,8 @@ public class MainActivity extends AppCompatActivity
                 Intent intent1 = new Intent(MainActivity.this,EditExpenseActivity.class);
                 intent1.putExtra("isEdit",false);
 
+                menu.close(false);
                 startActivity(intent1);
-//                menu.collapse();
             }
         });
 
@@ -96,12 +93,12 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 Intent intent2 = new Intent(MainActivity.this,EditRecurringExpense.class);
                 intent2.putExtra("isEdit",false);
+                menu.close(false);
                 startActivity(intent2);
             }
         });
 
         System.out.println("Inside On Create1");
-//        Log.e("vjbjavbjsb","Inside On Create log1");
 
         recyclerView = findViewById(R.id.expenseRecyclerView);
         noExpenseView = findViewById(R.id.emptyExpensesRecyclerViewPlaceholder);
@@ -172,6 +169,12 @@ public class MainActivity extends AppCompatActivity
 //        }
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        refreshAllForDate(new Date());
+    }
 
     @Override
     protected void onDestroy() {

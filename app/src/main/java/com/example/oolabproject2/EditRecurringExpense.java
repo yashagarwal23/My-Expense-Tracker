@@ -401,18 +401,18 @@ public class EditRecurringExpense extends AppCompatActivity {
             return true;
         }
 
-//        @Override
-//        protected void onPreExecute()
-//        {
-//            // Show a ProgressDialog
-//            dialog = new ProgressDialog(RecurringExpenseEditActivity.this);
-//            dialog.setIndeterminate(true);
-//            dialog.setTitle(R.string.recurring_expense_add_loading_title);
-//            dialog.setMessage(getResources().getString(isRevenue ? R.string.recurring_income_add_loading_message : R.string.recurring_expense_add_loading_message));
-//            dialog.setCanceledOnTouchOutside(false);
-//            dialog.setCancelable(false);
-//            dialog.show();
-//        }
+        @Override
+        protected void onPreExecute()
+        {
+            // Show a ProgressDialog
+            dialog = new ProgressDialog(EditRecurringExpense.this);
+            dialog.setIndeterminate(true);
+            dialog.setTitle(R.string.recurring_expense_add_loading_title);
+            dialog.setMessage(getResources().getString(isIncome ? R.string.recurring_income_add_loading_message : R.string.recurring_expense_add_loading_message));
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.setCancelable(false);
+            dialog.show();
+        }
 
         @Override
         protected void onPostExecute(Boolean result)
