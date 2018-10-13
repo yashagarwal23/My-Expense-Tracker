@@ -125,7 +125,7 @@ public class EditExpenseActivity extends AppCompatActivity {
 
         if( expense != null )
         {
-            mAmountEditText.setText(Double.toString(-expense.getAmount()));
+            mAmountEditText.setText(isIncome ? Double.toString(-expense.getAmount()) : Double.toString(expense.getAmount()));
         }
     }
 

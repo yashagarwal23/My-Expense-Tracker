@@ -135,7 +135,7 @@ public class ExpensesRecyclerViewAdapter extends RecyclerView.Adapter<ExpensesRe
                                     Intent startIntent = new Intent(viewHolder.view.getContext(), EditExpenseActivity.class);
                                     startIntent.putExtra("date", expense.getDate().getTime());
                                     startIntent.putExtra("expense", expense);
-
+                                    startIntent.putExtra("isEdit",true);
                                     ActivityCompat.startActivityForResult(activity, startIntent, MainActivity.ADD_EXPENSE_ACTIVITY_CODE, null);
 
                                     break;
@@ -209,8 +209,8 @@ public class ExpensesRecyclerViewAdapter extends RecyclerView.Adapter<ExpensesRe
                                     // Send notification to inform views that this expense has been deleted
                                     Intent intent = new Intent(MainActivity.INTENT_EXPENSE_DELETED);
                                     intent.putExtra("expense", expense);
+                                    System.out.println("I am in Recycler Adapter Deleting expense");
                                     LocalBroadcastManager.getInstance(activity.getApplicationContext()).sendBroadcast(intent);
-
                                     break;
                                 }
                             }

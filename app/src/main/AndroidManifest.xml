@@ -24,13 +24,14 @@
         <activity
             android:name=".EditExpenseActivity"
             android:label="Edit Expense"
-            android:parentActivityName=".MainActivity"></activity>
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".EditRecurringExpense"
             android:exported="true"
             android:label="Edit Recurring Expense"
-            android:parentActivityName=".MainActivity"></activity>
-        <activity android:name=".EditExpenseActivity2"></activity>
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".EditExpenseActivity2" />
+        <activity android:name=".MonthlyReportActivity"></activity>
     </application>
 
 </manifest>
