@@ -11,6 +11,13 @@
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
 
+
+    <string name="recurring_expense_add_loading_title">Loading</string>
+    <string name="recurring_expense_add_loading_message">Creating recurring expense…</string>
+    <string name="recurring_income_add_loading_message">Creating recurring income…</string>
+    <string name="recurring_expense_add_error_title">Oops</string>
+    <string name="recurring_expense_add_error_message">An error occurred.</string>
+
     <string name="action_example">Example action</string>
     <string name="payment">Expense</string>
     <string name="type">Type</string>
@@ -60,11 +67,41 @@
 
     <string-array name="interval_spinner_array">
         <item>Weekly</item>
-        <item>In 15 Days</item>
+        <item>BI-Weekly</item>
         <item>Monthly</item>
         <item>Yearly</item>
     </string-array>
     <string name="account_balance_format">Balance on %s:</string>
     <string name="account_balance_date_format">MMM dd</string>
+    <string name="amount">Amount</string>
 
+    <string name="expense_delete_snackbar_text">Expense deleted</string>
+    <string name="income_delete_snackbar_text">Income deleted</string>
+
+    <string name="recurring_expense_delete_first_error_title">Oops</string>
+    <string name="recurring_expense_delete_first_error_message">There are no instances before this one.</string>
+    <string name="ok">OK</string>
+    <string name="expense_delete_error_title">Oops</string>
+    <string name="expense_delete_error_message">An error occurred</string>
+    <string name="recurring_expense_delete_error_title">Oops</string>
+    <string name="recurring_expense_delete_error_message">An error occurred</string>
+    <string name="recurring_expense_delete_loading_title">Deleting</string>
+    <string name="recurring_expense_delete_loading_message">Deleting recurring expense…</string>
+    <string name="undo">Undo</string>
+    <string name="recurring_expense_delete_success_message">Recurring expense deleted with success</string>
+    <string name="recurring_expense_restoring_loading_title">Canceling</string>
+    <string name="recurring_expense_restoring_loading_message">Restoring deleted recurring expense…</string>
+    <string name="recurring_expense_restored_success_message">Recurring expense restored with success</string>
+    <string name="recurring_expense_restore_error_title">Oops</string>
+    <string name="recurring_expense_restore_error_message">An error occurred.</string>
+    <string name="app_invite_welcome_title">Welcome to EasyBudget</string>
+    <string name="app_invite_welcome_message">It looks like a friend recommended this app to you. Welcome on board and don\'t forget to thank your friend for that great advice ;)</string>
+    <string name="app_invite_welcome_cta">Go!</string>
+    <string name="expenses">Expenses</string>
+    <string name="incomes">Incomes</string>
+    <string name="monthly_report_month_title_format">MMMM yyyy</string>
+    <string name="expenses_total">Expenses total</string>
+    <string name="revenues_total">Revenues total</string>
+    <string name="balance">Balance</string>
+    <string name="monthly_report_no_entries_placeholder">Nothing for this month.</string>
 </resources>

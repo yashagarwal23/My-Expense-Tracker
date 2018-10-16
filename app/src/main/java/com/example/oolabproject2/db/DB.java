@@ -133,7 +133,7 @@ public final class DB
             if( id >= 0 )
             {
                 // Refresh cache for day
-//                DBCache.getInstance(context).refreshForDay(this, expense.getDate());
+                DBCache.getInstance(context).refreshForDay(this, expense.getDate());
 
                 expense.setId(id);
                 return true;
@@ -330,7 +330,7 @@ public final class DB
             if(cursor.moveToFirst())
             {
                 int value = cursor.getInt(0);
-                return (double) value / 100.d;
+                return (double) value;
             }
 
             return 0;
@@ -658,7 +658,7 @@ public final class DB
         (
             cursor.getLong(cursor.getColumnIndex(SQLiteDBHelper.COLUMN_EXPENSE_DB_ID)),
             cursor.getString(cursor.getColumnIndex(SQLiteDBHelper.COLUMN_EXPENSE_TITLE)),
-            (double) cursor.getLong(cursor.getColumnIndex(SQLiteDBHelper.COLUMN_EXPENSE_AMOUNT)) / 100.d,
+            (double) cursor.getLong(cursor.getColumnIndex(SQLiteDBHelper.COLUMN_EXPENSE_AMOUNT)),
             new Date(cursor.getLong(cursor.getColumnIndex(SQLiteDBHelper.COLUMN_EXPENSE_DATE))),
             recurringExpense
         );

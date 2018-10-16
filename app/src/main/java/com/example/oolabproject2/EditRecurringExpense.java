@@ -6,8 +6,6 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.NonNull;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -31,7 +29,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
-import java.util.logging.Logger;
+import static com.example.oolabproject2.helper.RecurringExpenseType.*;
 
 public class EditRecurringExpense extends AppCompatActivity {
 
@@ -77,13 +75,27 @@ public class EditRecurringExpense extends AppCompatActivity {
             expense = getIntent().getParcelableExtra("expense");
             isIncome = expense.isRevenue();
             date = expense.getRecurringDate();
-
+//            spinner.setSelection(getPosition(expense.getType()));
             setTitle(isIncome ? R.string.title_activity_edit_income : R.string.title_activity_edit_expense);
         }
 
         setUpButtons();
         setUpTextViews();
         setUpDateButton();
+    }
+
+    private int getPosition(RecurringExpenseType type) {
+        switch (type) {
+            case WEEKLY:
+                return 0;
+            case BI_WEEKLY:
+                return 1;
+            case MONTHLY:
+                return 2;
+            case YEARLY:
+                return 3;
+        }
+        return -1;
     }
 
     @Override
@@ -105,7 +117,7 @@ public class EditRecurringExpense extends AppCompatActivity {
 
         if( expense != null )
         {
-            mAmountEditText.setText(Double.toString(expense.getAmount()));
+            mAmountEditText.setText(isIncome ? Double.toString(-expense.getAmount()) : Double.toString(expense.getAmount()));
         }
 
         if( expense != null )
@@ -180,13 +192,13 @@ public class EditRecurringExpense extends AppCompatActivity {
         switch (selectedItemPosition)
         {
             case 0:
-                return RecurringExpenseType.WEEKLY;
+                return WEEKLY;
             case 1:
-                return RecurringExpenseType.BI_WEEKLY;
+                return BI_WEEKLY;
             case 2:
-                return RecurringExpenseType.MONTHLY;
+                return MONTHLY;
             case 3:
-                return RecurringExpenseType.YEARLY;
+                return YEARLY;
         }
 
         return null;
@@ -401,18 +413,18 @@ public class EditRecurringExpense extends AppCompatActivity {
             return true;
         }
 
-//        @Override
-//        protected void onPreExecute()
-//        {
-//            // Show a ProgressDialog
-//            dialog = new ProgressDialog(RecurringExpenseEditActivity.this);
-//            dialog.setIndeterminate(true);
-//            dialog.setTitle(R.string.recurring_expense_add_loading_title);
-//            dialog.setMessage(getResources().getString(isRevenue ? R.string.recurring_income_add_loading_message : R.string.recurring_expense_add_loading_message));
-//            dialog.setCanceledOnTouchOutside(false);
-//            dialog.setCancelable(false);
-//            dialog.show();
-//        }
+        @Override
+        protected void onPreExecute()
+        {
+            // Show a ProgressDialog
+            dialog = new ProgressDialog(EditRecurringExpense.this);
+            dialog.setIndeterminate(true);
+            dialog.setTitle(R.string.recurring_expense_add_loading_title);
+            dialog.setMessage(getResources().getString(isIncome ? R.string.recurring_income_add_loading_message : R.string.recurring_expense_add_loading_message));
+            dialog.setCanceledOnTouchOutside(false);
+            dialog.setCancelable(false);
+            dialog.show();
+        }
 
         @Override
         protected void onPostExecute(Boolean result)
@@ -429,18 +441,18 @@ public class EditRecurringExpense extends AppCompatActivity {
             {
 
 //                TODO set up new ALertDialog
-//                new AlertDialog.Builder(EditRecurringExpense.this)
-//                        .setTitle("ERROR!!")
-//                        .setMessage(getResources().getString(R.string.recurring_expense_add_error_message))
-//                        .setNegativeButton(R.string.ok, new DialogInterface.OnClickListener()
-//                        {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which)
-//                            {
-//                                dialog.dismiss();
-//                            }
-//                        })
-//                        .show();
+                new AlertDialog.Builder(EditRecurringExpense.this)
+                        .setTitle("ERROR!!")
+                        .setMessage(getResources().getString(R.string.recurring_expense_add_error_message))
+                        .setNegativeButton("OK", new DialogInterface.OnClickListener()
+                        {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which)
+                            {
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
             }
         }
     }

@@ -62,6 +62,8 @@ public class EditExpenseActivity extends AppCompatActivity {
             isIncome = expense.isRevenue();
             date = expense.getDate();
 
+            System.out.println("I am here!!!!");
+
             setTitle(isIncome ? R.string.title_activity_edit_income : R.string.title_activity_edit_expense);
         }
 
@@ -123,7 +125,7 @@ public class EditExpenseActivity extends AppCompatActivity {
 
         if( expense != null )
         {
-            mAmountEditText.setText(Double.toString(expense.getAmount()));
+            mAmountEditText.setText(isIncome ? Double.toString(-expense.getAmount()) : Double.toString(expense.getAmount()));
         }
     }
 
@@ -163,7 +165,8 @@ public class EditExpenseActivity extends AppCompatActivity {
             {
                 if (validateInputs())
                 {
-                    double value = Double.parseDouble(mAmountEditText.getText().toString());
+                    Double value = Double.parseDouble(mAmountEditText.getText().toString());
+                    System.out.println("value : "+value);
 
                     Expense expenseToSave;
                     if (expense == null)

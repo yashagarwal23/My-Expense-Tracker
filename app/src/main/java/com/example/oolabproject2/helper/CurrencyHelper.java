@@ -165,9 +165,8 @@ public class CurrencyHelper
 
         // No fraction digits
         currencyFormat.setMaximumFractionDigits(2);
-        currencyFormat.setMinimumFractionDigits(2);
 
-        currencyFormat.setCurrency(getUserCurrency(context));
+//        currencyFormat.setCurrency(getUserCurrency(context));
 
         return currencyFormat.format(amount);
     }

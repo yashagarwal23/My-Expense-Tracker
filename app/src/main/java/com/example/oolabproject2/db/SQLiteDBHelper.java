@@ -45,7 +45,7 @@ public final class SQLiteDBHelper extends SQLiteOpenHelper
             + TABLE_EXPENSE + "("
             + COLUMN_EXPENSE_DB_ID + " integer primary key autoincrement, "
             + COLUMN_EXPENSE_TITLE + " text not null, "
-            + COLUMN_EXPENSE_AMOUNT + " integer not null, "
+            + COLUMN_EXPENSE_AMOUNT + " double not null, "
             + COLUMN_EXPENSE_DATE + " integer not null, "
             + COLUMN_EXPENSE_RECURRING_ID + " integer null );");
 
@@ -56,7 +56,7 @@ public final class SQLiteDBHelper extends SQLiteOpenHelper
             + TABLE_RECURRING_EXPENSE + "("
             + COLUMN_RECURRING_DB_ID + " integer primary key autoincrement, "
             + COLUMN_RECURRING_TITLE + " text not null, "
-            + COLUMN_RECURRING_AMOUNT + " integer not null, "
+            + COLUMN_RECURRING_AMOUNT + " double not null, "
             + COLUMN_RECURRING_MODIFIED + " integer not null, "
             + COLUMN_RECURRING_RECURRING_DATE + " integer not null, "
             + COLUMN_RECURRING_TYPE + " text not null DEFAULT '"+RecurringExpenseType.MONTHLY+"');");
