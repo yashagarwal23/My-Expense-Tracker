@@ -4,26 +4,15 @@
     tools:showIn="navigation_view">
 
     <group android:checkableBehavior="single">
+
         <item
-            android:id="@+id/nav_camera"
-            android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
+            android:id="@+id/emi_calculator"
+            android:icon="@drawable/ic_menu_emi"
+            android:title="EMI CALCULATOR" />
     </group>
 
     <item android:title="Communicate">
-        <menu>
+        <!--<menu>
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"
@@ -33,6 +22,7 @@
                 android:icon="@drawable/ic_menu_send"
                 android:title="Send" />
         </menu>
+        -->
     </item>
 
 </menu>

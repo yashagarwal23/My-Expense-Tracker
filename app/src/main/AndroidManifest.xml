@@ -31,6 +31,10 @@
             android:label="Edit Recurring Expense"
             android:parentActivityName=".MainActivity" />
         <activity android:name=".EditExpenseActivity2" />
+        <activity android:name=".emiCalculator"
+            android:label="EMI CALCULATOR"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity android:name=".MonthlyReportActivity"></activity>
     </application>
 
