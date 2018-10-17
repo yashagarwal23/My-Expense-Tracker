@@ -1,5 +1,6 @@
 package com.example.oolabproject2;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -10,9 +11,10 @@ import android.widget.TextView;
 
 public class emiCalculator extends AppCompatActivity {
 
-    double amount;
-    double rate;
-    double tenure_;
+    public static float amount;
+    public static float rate;
+    public static float tenure_;
+    public  static float total;
     EditText mEdit1;
     EditText mEdit2;
     EditText mEdit3;
@@ -85,7 +87,7 @@ public class emiCalculator extends AppCompatActivity {
                     System.out.println("Could not parse " + nfe);
                 }
                 try {
-                    rate = Double.parseDouble(mEdit2.getText().toString());
+                    rate = Float.parseFloat(mEdit2.getText().toString());
                 } catch(NumberFormatException nfe) {
                     System.out.println("Could not parse " + nfe);
                 }
@@ -99,9 +101,12 @@ public class emiCalculator extends AppCompatActivity {
                 loanEmiOut.setText(""+(long)(emi));
                 totalIntPayOut.setText(""+(long)(emi*tenure_-amount));
                 totatPayOut.setText(""+(long)(emi*tenure_));
+                total=(float)(emi*tenure_);
             }
         });
-
+        /*Intent myIntent = new Intent(MainActivity.this, emiCalculator.class);
+        //myIntent.putExtra("key", value); //Optional parameters
+        MainActivity.this.startActivity(myIntent);*/
         /*try {
             amount = Long.parseLong(mEdit1.getText().toString());
         } catch(NumberFormatException nfe) {
@@ -118,7 +123,50 @@ public class emiCalculator extends AppCompatActivity {
             System.out.println("Could not parse " + nfe);
         }
         totatPayOut.setText(mEdit1.getText().toString());*/
+        Button mButton2;
+        mButton2 = (Button)findViewById(R.id.button2);
+        mButton2.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                Intent myIntent = new Intent(emiCalculator.this, piechart.class);
+                //myIntent.putExtra("key", value); //Optional parameters
+                emiCalculator.this.startActivity(myIntent);
+                /*mEdit1   = (EditText)findViewById(R.id.editText1);
+                mEdit2   = (EditText)findViewById(R.id.editText2);
+                //mEdit2.getText().toString();
+                mEdit3   = (EditText)findViewById(R.id.editText3);
+                //mEdit3.getText().toString();
+                try {
+                    amount = Long.parseLong(mEdit1.getText().toString());
+                } catch(NumberFormatException nfe) {
+                    System.out.println("Could not parse " + nfe);
+                }
+                try {
+                    rate = Double.parseDouble(mEdit2.getText().toString());
+                } catch(NumberFormatException nfe) {
+                    System.out.println("Could not parse " + nfe);
+                }
+                try {
+                    tenure_ = Long.parseLong(mEdit3.getText().toString());
+                } catch(NumberFormatException nfe) {
+                    System.out.println("Could not parse " + nfe);
+                }
+                double interestPerMonth=(double)(rate)/(12.0*100.0);
+                double emi=(amount*interestPerMonth*(Math.pow(interestPerMonth+1,tenure_)))/((Math.pow((interestPerMonth+1),tenure_))-1);
+                loanEmiOut.setText(""+(long)(emi));
+                totalIntPayOut.setText(""+(long)(emi*tenure_-amount));
+                totatPayOut.setText(""+(long)(emi*tenure_));*/
+            }
+        });
     }
+
+    public static float getAmount() {
+        return amount;
+    }
+
+    public static float getTotal() {
+        return total;
+    }
+
     @Override
     public boolean onSupportNavigateUp() {
         onBackPressed();

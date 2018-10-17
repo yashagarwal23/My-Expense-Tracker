@@ -575,8 +575,9 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+
         if (id == R.id.emi_calculator) {
-            Intent myIntent = new Intent(MainActivity.this, emiCalculator.class);
+            Intent myIntent = new Intent(MainActivity.this,emiCalculator.class);
             //myIntent.putExtra("key", value); //Optional parameters
             MainActivity.this.startActivity(myIntent);
 

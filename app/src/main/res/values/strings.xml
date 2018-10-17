@@ -104,4 +104,6 @@
     <string name="revenues_total">Revenues total</string>
     <string name="balance">Balance</string>
     <string name="monthly_report_no_entries_placeholder">Nothing for this month.</string>
+    <string name="title_activity_piechart">piechart</string>
+    <string name="title_activity_new_emi_calculator">newEmiCalculator</string>
 </resources>
