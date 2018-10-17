@@ -41,7 +41,8 @@
                         android:id="@+id/budgetAmount"
                         android:layout_width="match_parent"
                         android:textAlignment="center"
-                        android:textSize="18sp"
+                        android:gravity="center"
+                        android:textSize="26sp"
                         android:layout_height="40dp" />
 
                     <android.support.v7.widget.RecyclerView

@@ -580,15 +580,9 @@ public class MainActivity extends AppCompatActivity
             //myIntent.putExtra("key", value); //Optional parameters
             MainActivity.this.startActivity(myIntent);
 
-        } /*else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
-        }*/
+        } else if(id == R.id.home) {
+            Intent homeIntent = new Intent(MainActivity.this,MainActivity.class);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

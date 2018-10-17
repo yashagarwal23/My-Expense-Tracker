@@ -6,12 +6,16 @@
     <group android:checkableBehavior="single">
 
         <item
+            android:id="@+id/home"
+            android:icon="@drawable/calendar"
+            android:title="Home " />
+        <item
             android:id="@+id/emi_calculator"
             android:icon="@drawable/ic_menu_emi"
             android:title="EMI CALCULATOR" />
     </group>
 
-    <item android:title="Communicate">
+    <!--<item android:title="Communicate">-->
         <!--<menu>
             <item
                 android:id="@+id/nav_share"
@@ -23,6 +27,6 @@
                 android:title="Send" />
         </menu>
         -->
-    </item>
+    <!--</item>-->
 
 </menu>
