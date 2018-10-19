@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:statusBarBackground="#565636"
     tools:context=".emiCalculator">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -46,26 +45,28 @@
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/loanAmount"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_weight="1"
-                android:layout_height="36dp"
+                android:layout_height="50dp"
                 android:layout_gravity="center_vertical"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 tools:text="EMI CALCULATOR" />
             />
             <EditText
                 android:id="@+id/editText1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_alignBottom="@+id/textView2"
                 android:layout_toRightOf="@+id/textView2"
                 android:layout_gravity="center_vertical"
                 android:background="#CCCCCC"
                 android:ems="10"
+                android:textSize="20sp"
                 android:inputType="numberDecimal" >
 
                 <requestFocus />
@@ -81,26 +82,28 @@
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/interestRate"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="36dp"
                 android:layout_gravity="center_vertical"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 tools:text="EMI CALCULATOR" />
             />
             <EditText
                 android:id="@+id/editText2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
                 android:layout_alignBottom="@+id/textView2"
                 android:layout_toRightOf="@+id/textView2"
                 android:layout_gravity="center_vertical"
                 android:background="#CCCCCC"
+                android:layout_weight="1"
                 android:ems="10"
+                android:textSize="20sp"
                 android:inputType="numberDecimal" >
 
                 <requestFocus />
@@ -114,24 +117,26 @@
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/tenure"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="36dp"
                 android:layout_gravity="center_vertical"
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 tools:text="EMI CALCULATOR" />
             />
             <EditText
                 android:id="@+id/editText3"
-                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_gravity="center_vertical"
                 android:background="#CCCCCC"
                 android:ems="10"
+                android:textSize="20sp"
                 android:inputType="numberDecimal" >
 
                 <requestFocus />
@@ -149,8 +154,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="center_vertical"
-                android:background="#000000"
-                android:textColor="#FFFFFF"
+                android:background="#B2BEB5"
+                android:textSize="20sp"
+                android:textColor="#000000"
                 android:gravity="center"
                 android:text="SUBMIT"/>
         </LinearLayout>
@@ -168,7 +174,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 tools:text="EMI CALCULATOR" />
             />
             <TextView
@@ -181,7 +187,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:background="#CCCCCC"
                 tools:text="EMI CALCULATOR" />
             />
@@ -201,7 +207,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 tools:text="EMI CALCULATOR" />
             />
             <TextView
@@ -215,7 +221,7 @@
                 android:gravity="center"
                 android:textColor="#000000"
                 android:background="#CCCCCC"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 tools:text="EMI CALCULATOR" />
             />
 
@@ -234,7 +240,7 @@
                 android:fontFamily="sans-serif-medium"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 tools:text="EMI CALCULATOR" />
             />
             <TextView
@@ -246,7 +252,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:background="#CCCCCC"
                 tools:text="EMI CALCULATOR" />
             />
@@ -263,9 +269,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:layout_gravity="center_vertical"
-                android:background="#000000"
-                android:textColor="#FFFFFF"
+                android:background="#B2BEB5"
+                android:textColor="#000000"
                 android:gravity="center"
+                android:textSize="20sp"
                 android:text="VIEW PIE CHART"/>
         </LinearLayout>
 
