@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="8dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
@@ -30,8 +31,7 @@
             android:id="@+id/budgetAmount"
             android:layout_width="match_parent"
             android:textAlignment="center"
-            android:gravity="center"
-            android:textSize="26sp"
+            android:textSize="18sp"
             android:layout_height="40dp" />
 
         <android.support.v7.widget.RecyclerView
@@ -85,7 +85,6 @@
             fab:fab_colorNormal="@color/fab_add_monthly_expense"
             fab:fab_colorPressed="@color/fab_add_monthly_expense_pressed"
             fab:fab_label="Add Recurring Income/Expense" />
-
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/add_fab"
             android:layout_width="wrap_content"

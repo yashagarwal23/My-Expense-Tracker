@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.design.widget.TextInputLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import android.widget.TextView;
 import com.example.oolabproject2.ExpenseModel.Expense;
 import com.example.oolabproject2.ExpenseModel.RecurringExpense;
 import com.example.oolabproject2.db.DB;
+import com.example.oolabproject2.helper.CurrencyHelper;
 import com.example.oolabproject2.helper.RecurringExpenseType;
 
 import java.text.SimpleDateFormat;
@@ -72,10 +74,11 @@ public class EditRecurringExpense extends AppCompatActivity {
             setTitle("Add Recurring Expense");
         }
         else {
-            expense = getIntent().getParcelableExtra("expense");
+            Expense tempExpense = getIntent().getParcelableExtra("expense");
+            expense = tempExpense.getAssociatedRecurringExpense();
             isIncome = expense.isRevenue();
-            date = expense.getRecurringDate();
-//            spinner.setSelection(getPosition(expense.getType()));
+            date = new Date(getIntent().getLongExtra("date",0));
+            spinner.setSelection(getPosition(expense.getType()));
             setTitle(isIncome ? R.string.title_activity_edit_income : R.string.title_activity_edit_expense);
         }
 
@@ -106,18 +109,15 @@ public class EditRecurringExpense extends AppCompatActivity {
 
     private void setUpTextViews()
     {
-//        ((TextInputLayout) findViewById(R.id.amount_inputlayout)).setHint(getResources().getString(R.string.amount, CurrencyHelper.getUserCurrency(this).getSymbol()));
-
         if( expense != null )
         {
             mDescriptionEditText.setText(expense.getTitle());
             mDescriptionEditText.setSelection(mDescriptionEditText.getText().length()); // Put focus at the end of the text
         }
-        //        UIHelper.preventUnsupportedInputForDecimals(mAmountEditText);
 
         if( expense != null )
         {
-            mAmountEditText.setText(isIncome ? Double.toString(-expense.getAmount()) : Double.toString(expense.getAmount()));
+            mAmountEditText.setText(isIncome ? Double.toString(-(expense.getAmount()*100)) : Double.toString((expense.getAmount()*100)));
         }
 
         if( expense != null )

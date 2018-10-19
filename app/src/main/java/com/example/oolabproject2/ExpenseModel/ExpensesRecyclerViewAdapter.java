@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.oolabproject2.EditExpenseActivity;
+import com.example.oolabproject2.EditRecurringExpense;
 import com.example.oolabproject2.MainActivity;
 import com.example.oolabproject2.R;
 import com.example.oolabproject2.db.DB;
@@ -132,12 +133,13 @@ public class ExpensesRecyclerViewAdapter extends RecyclerView.Adapter<ExpensesRe
                             {
                                 case 0: // Edit this one
                                 {
-                                    Intent startIntent = new Intent(viewHolder.view.getContext(), EditExpenseActivity.class);
-                                    startIntent.putExtra("date", expense.getDate().getTime());
+                                    RecurringExpense r = expense.getAssociatedRecurringExpense();
+                                    System.out.println("RExpense : Date : " + r.getRecurringDate() +  " Amount : " + r.getAmount());
+                                    Intent startIntent = new Intent(viewHolder.view.getContext(), EditRecurringExpense.class);
+                                    startIntent.putExtra("date", (expense.getDate()).getTime());
                                     startIntent.putExtra("expense", expense);
                                     startIntent.putExtra("isEdit",true);
                                     ActivityCompat.startActivityForResult(activity, startIntent, MainActivity.ADD_EXPENSE_ACTIVITY_CODE, null);
-
                                     break;
                                 }
                                 case 1: // Delete this one
