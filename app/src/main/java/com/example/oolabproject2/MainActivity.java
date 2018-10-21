@@ -43,7 +43,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.RelativeLayout;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -63,8 +63,10 @@ public class MainActivity extends AppCompatActivity
     TextView budgetLineAmount;
     ExpensesRecyclerViewAdapter expensesViewAdapter;
     private BroadcastReceiver receiver;
-    RelativeLayout relativeLayout;
+    FrameLayout frameLayout;
     NavigationView navigationView ;
+    Date selectedDate;
+    FloatingActionMenu menu;
 
     private static final int ACTION_SNACKBAR_LENGTH = 5000;
     public static final int ADD_EXPENSE_ACTIVITY_CODE = 101;
@@ -102,8 +104,10 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        final FloatingActionMenu menu = (FloatingActionMenu)findViewById(R.id.fam);
+        menu = (FloatingActionMenu)findViewById(R.id.fam);
         menu.setClosedOnTouchOutside(true);
+
+        selectedDate = new Date(System.currentTimeMillis());
 
         FloatingActionButton Addfab = (FloatingActionButton)findViewById(R.id.add_fab);
         Addfab.setOnClickListener(new View.OnClickListener() {
@@ -111,7 +115,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 Intent intent1 = new Intent(MainActivity.this,EditExpenseActivity.class);
                 intent1.putExtra("isEdit",false);
-
+                intent1.putExtra("date",selectedDate.getTime());
                 menu.close(false);
                 startActivity(intent1);
             }
@@ -123,6 +127,7 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View v) {
                 Intent intent2 = new Intent(MainActivity.this,EditRecurringExpense.class);
                 intent2.putExtra("isEdit",false);
+                intent2.putExtra("date",selectedDate.getTime());
                 menu.close(false);
                 startActivity(intent2);
             }
@@ -133,7 +138,7 @@ public class MainActivity extends AppCompatActivity
         recyclerView = findViewById(R.id.expenseRecyclerView);
         noExpenseView = findViewById(R.id.emptyExpensesRecyclerViewPlaceholder);
         budgetLineAmount = (TextView)findViewById(R.id.budgetAmount);
-        relativeLayout = (RelativeLayout)findViewById(R.id.main_activity_parent);
+        frameLayout = (FrameLayout)findViewById(R.id.main_activity_parent);
 
         initialiseCalendarView();
         initRecycleView(savedInstanceState);
@@ -166,7 +171,7 @@ public class MainActivity extends AppCompatActivity
                         updateBalanceDisplayForDay(expensesViewAdapter.getDate());
                         caldroidFragment.refreshView();
 
-                        Snackbar snackbar = Snackbar.make(relativeLayout, expense.isRevenue() ? R.string.income_delete_snackbar_text : R.string.expense_delete_snackbar_text, Snackbar.LENGTH_LONG);
+                        Snackbar snackbar = Snackbar.make(frameLayout, expense.isRevenue() ? R.string.income_delete_snackbar_text : R.string.expense_delete_snackbar_text, Snackbar.LENGTH_LONG);
                         snackbar.setAction(R.string.undo, new View.OnClickListener()
                         {
                             @Override
@@ -478,18 +483,18 @@ public class MainActivity extends AppCompatActivity
         final CaldroidListener listener = new CaldroidListener() {
             @Override
             public void onSelectDate(Date date, View view) {
+                selectedDate = date;
                 refreshAllForDate(date);
+                menu.close(true);
             }
 
             @Override
             public void onLongClickDate(Date date, View view) {
-
-                // TODO set this method
-
+                System.out.println("Long pressed!!!");
                 Intent startAddIncomeIntent = new Intent(MainActivity.this, EditExpenseActivity.class);
                 startAddIncomeIntent.putExtra("date",date.getTime());
-
-
+                startActivity(startAddIncomeIntent);
+                menu.close(true);
             }
         };
         return listener;
@@ -711,7 +716,7 @@ public class MainActivity extends AppCompatActivity
             {
                 // Refresh and show confirm snackbar
                 refreshAllForDate(expensesViewAdapter.getDate());
-                Snackbar snackbar = Snackbar.make(relativeLayout, R.string.recurring_expense_delete_success_message, Snackbar.LENGTH_LONG);
+                Snackbar snackbar = Snackbar.make(frameLayout, R.string.recurring_expense_delete_success_message, Snackbar.LENGTH_LONG);
 
                 if( expensesToRestore != null ) // just in case..
                 {
@@ -813,7 +818,7 @@ public class MainActivity extends AppCompatActivity
             {
                 // Refresh and show confirm snackbar
                 refreshAllForDate(expensesViewAdapter.getDate());
-                Snackbar.make(relativeLayout, R.string.recurring_expense_restored_success_message, Snackbar.LENGTH_LONG).show();
+                Snackbar.make(frameLayout, R.string.recurring_expense_restored_success_message, Snackbar.LENGTH_LONG).show();
             }
             else
             {

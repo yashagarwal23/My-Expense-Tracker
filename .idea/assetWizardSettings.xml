@@ -52,7 +52,7 @@
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="scalingPercent" value="124" />
+                                                <entry key="scalingPercent" value="104" />
                                                 <entry key="trimmed" value="true" />
                                               </map>
                                             </option>
@@ -65,10 +65,21 @@
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
                                       <entry key="backgroundColor" value="a6a3a3" />
-                                      <entry key="backgroundLayerName" value="ic_launcher_backgroun" />
-                                      <entry key="foregroundImage" value="$USER_HOME$/Desktop/emi.png" />
-                                      <entry key="foregroundLayerName" value="ic_calendar_app_bar" />
-                                      <entry key="outputName" value="ic_calculator_app_bar2" />
+                                      <entry key="foregroundImage" value="$USER_HOME$/Downloads/calendar (1).png" />
+                                      <entry key="legacyIconShape" value="CIRCLE" />
+                                      <entry key="outputName" value="calendar_icon" />
+                                      <entry key="webIconShape" value="CIRCLE" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="launcherLegacy">
+                              <value>
+                                <PersistentState>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="assetType" value="IMAGE" />
                                     </map>
                                   </option>
                                 </PersistentState>

@@ -7,11 +7,11 @@
 
         <item
             android:id="@+id/home"
-            android:icon="@mipmap/ic_calendar_app_bar"
+            android:icon="@mipmap/calendar_icon"
             android:title="Home " />
         <item
             android:id="@+id/emi_calculator"
-            android:icon="@mipmap/ic_calculator_app_bar2"
+            android:icon="@mipmap/emi_icon"
             android:title="EMI CALCULATOR" />
     </group>
 </menu>

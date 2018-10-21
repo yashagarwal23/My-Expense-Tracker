@@ -26,9 +26,11 @@ import android.support.annotation.Nullable;
 import android.support.annotation.VisibleForTesting;
 import android.support.v4.util.Pair;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.oolabproject2.ExpenseModel.Expense;
 import com.example.oolabproject2.ExpenseModel.RecurringExpense;
+import com.example.oolabproject2.MainActivity;
 import com.example.oolabproject2.helper.DateHelper;
 import com.example.oolabproject2.helper.RecurringExpenseType;
 
@@ -367,6 +369,7 @@ public final class DB
 
         if( id > 0 )
         {
+            System.out.println("Id : " + id);
             expense.setId(id);
             return true;
         }
@@ -423,23 +426,22 @@ public final class DB
      */
     public boolean deleteExpense(@NonNull Expense expense)
     {
-        boolean delete = database.delete(SQLiteDBHelper.TABLE_EXPENSE, SQLiteDBHelper.COLUMN_EXPENSE_DB_ID+"="+expense.getId(), null) > 0;
+        boolean delete = false;
+        if(database.isOpen()) {
+            delete = database.delete(SQLiteDBHelper.TABLE_EXPENSE, SQLiteDBHelper.COLUMN_EXPENSE_DB_ID+"="+expense.getId(), null) > 0;
+        } else {
+            delete = false;
+//            Toast.makeText(context, "This is my Toast message!",
+//                    Toast.LENGTH_LONG).show();
+        }
 
         if( delete )
         {
-            // Refresh cache for day
             DBCache.getInstance(context).refreshForDay(this, expense.getDate());
         }
-
         return delete;
     }
 
-    /**
-     * Delete all expense for this recurring expense
-     *
-     * @param recurringExpense
-     * @return true on success, false on error
-     */
     public boolean deleteAllExpenseForRecurringExpense(@NonNull RecurringExpense recurringExpense)
     {
         boolean deleted = database.delete(SQLiteDBHelper.TABLE_EXPENSE, SQLiteDBHelper.COLUMN_EXPENSE_RECURRING_ID +"="+ recurringExpense.getId(), null) > 0;
@@ -452,12 +454,6 @@ public final class DB
         return deleted;
     }
 
-    /**
-     * Get all expenses associated with this recurring expense
-     *
-     * @param recurringExpense
-     * @return
-     */
     public List<Expense> getAllExpenseForRecurringExpense(@NonNull RecurringExpense recurringExpense)
     {
         Cursor cursor = null;
@@ -755,6 +751,7 @@ public final class DB
 
         if( expense.getId() != null )
         {
+            System.out.println("Recurring expense id : " + expense.getId());
             values.put(SQLiteDBHelper.COLUMN_RECURRING_DB_ID, expense.getId());
         }
 

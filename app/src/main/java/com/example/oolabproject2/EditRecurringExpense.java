@@ -50,6 +50,8 @@ public class EditRecurringExpense extends AppCompatActivity {
     Spinner spinner;
 
     private boolean isIncome = false;
+    private boolean isEdit = false;
+    private  RecurringExpense oldExpense;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,10 +74,13 @@ public class EditRecurringExpense extends AppCompatActivity {
 
         if(!getIntent().getBooleanExtra("isEdit",false)) {
             setTitle("Add Recurring Expense");
+            date = new Date(getIntent().getLongExtra("date", System.currentTimeMillis()));
+            isEdit = true;
         }
         else {
             Expense tempExpense = getIntent().getParcelableExtra("expense");
             expense = tempExpense.getAssociatedRecurringExpense();
+            oldExpense = expense;
             isIncome = expense.isRevenue();
             date = new Date(getIntent().getLongExtra("date",0));
             spinner.setSelection(getPosition(expense.getType()));
@@ -244,6 +249,9 @@ public class EditRecurringExpense extends AppCompatActivity {
 
     private boolean isEdit()
     {
+
+        isEdit = true;
+
         return getIntent().hasExtra("expense");
     }
 

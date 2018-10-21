@@ -149,7 +149,6 @@ public class ExpensesRecyclerViewAdapter extends RecyclerView.Adapter<ExpensesRe
                                     intent.putExtra("expense", expense);
                                     intent.putExtra("deleteType", RecurringExpenseDeleteType.ONE.getValue());
                                     LocalBroadcastManager.getInstance(activity.getApplicationContext()).sendBroadcast(intent);
-
                                     break;
                                 }
                                 case 2: // Delete from

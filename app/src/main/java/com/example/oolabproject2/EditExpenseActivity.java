@@ -56,6 +56,7 @@ public class EditExpenseActivity extends AppCompatActivity {
 
         if(!getIntent().getBooleanExtra("isEdit",false)) {
             setTitle("Add Expense");
+            date = new Date(getIntent().getLongExtra("date", System.currentTimeMillis()));
             expense = null;
         } else {
             expense = getIntent().getParcelableExtra("expense");
